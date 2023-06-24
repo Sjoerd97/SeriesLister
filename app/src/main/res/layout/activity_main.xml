@@ -7,38 +7,41 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:padding="8sp"
-    android:visibility="visible"
+    android:visibility="gone"
     tools:context=".MainActivity">
 
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:fab_expandDirection="up"
-        app:fab_labelStyle="@style/LabelsStyle"
-        app:fab_labelsPosition="right"
+        android:src="@drawable/ic_add"
+        app:tint="@android:color/white"
+        app:fabSize="normal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight="16sp"
-        app:layout_constraintWidth="16sp">
-
-        <com.getbase.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:fab_colorNormal="#FFF"
-            app:fab_icon="@drawable/baseline_add_box_24"
-            app:fab_size="normal"
-            app:fab_title="Label on the right" />
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ListView
+        android:id="@+id/seriesListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/seriesListView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_series"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="150dp"
+        android:hint="@string/NameOfSeries"
+        android:inputType="text"
+        android:textSize="14sp"
+        android:visibility="gone"
+        android:lines="1"
+        android:ems="10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 

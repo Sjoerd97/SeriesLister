@@ -13,16 +13,15 @@ import java.util.Arrays;
 public class CustomBaseAdapter extends BaseAdapter {
 
     Context ctx;
-    String[] series;
-    int[] seriesImages;
-    LayoutInflater layoutInflater;
+    private final String[] series;
+    private final int[] seriesImages;
+    private final LayoutInflater layoutInflater;
 
     public CustomBaseAdapter(Context ctx, String[] series, int[] seriesImages) {
         this.ctx = ctx;
         this.series = series;
         this.seriesImages = seriesImages;
         this.layoutInflater = LayoutInflater.from(ctx);
-
     }
 
     @Override
@@ -45,8 +44,10 @@ public class CustomBaseAdapter extends BaseAdapter {
         convertView = layoutInflater.inflate(R.layout.activity_custom_list_viewer, null);
         TextView textView = (TextView) convertView.findViewById(R.id.textImage);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageIcon);
+
         textView.setText(series[position]);
         imageView.setImageResource(seriesImages[position]);
+
         return convertView;
     }
 }
