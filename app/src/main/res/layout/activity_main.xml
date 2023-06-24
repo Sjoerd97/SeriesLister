@@ -6,41 +6,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:visibility="gone"
     android:padding="8sp"
+    android:visibility="visible"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/cock_check"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fab_expandDirection="up"
-        app:fab_labelsPosition="right"
         app:fab_labelStyle="@style/LabelsStyle"
+        app:fab_labelsPosition="right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintWidth="16dp"
-        app:layout_constraintHeight="16dp">
+        app:layout_constraintHeight="16sp"
+        app:layout_constraintWidth="16sp">
 
         <com.getbase.floatingactionbutton.FloatingActionButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:fab_colorNormal="#FFF"
-            app:fab_size="mini"
-            app:fab_title="Label on the right"
             app:fab_icon="@drawable/baseline_add_box_24"
-            />
+            app:fab_size="normal"
+            app:fab_title="Label on the right" />
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/seriesListView"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
