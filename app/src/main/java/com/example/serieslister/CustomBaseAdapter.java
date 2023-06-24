@@ -8,16 +8,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CustomBaseAdapter extends BaseAdapter {
 
     Context ctx;
-    private final String[] series;
+    private final ArrayList<String> series;
     private final int[] seriesImages;
     private final LayoutInflater layoutInflater;
 
-    public CustomBaseAdapter(Context ctx, String[] series, int[] seriesImages) {
+    public CustomBaseAdapter(Context ctx, ArrayList<String> series, int[] seriesImages) {
         this.ctx = ctx;
         this.series = series;
         this.seriesImages = seriesImages;
@@ -26,12 +28,12 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return series.length;
+        return series.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return Arrays.stream(series).findFirst();
+        return series.stream().findFirst();
     }
 
     @Override
@@ -45,7 +47,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         TextView textView = (TextView) convertView.findViewById(R.id.textImage);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.imageIcon);
 
-        textView.setText(series[position]);
+        textView.setText(series.get(position));
         imageView.setImageResource(seriesImages[position]);
 
         return convertView;

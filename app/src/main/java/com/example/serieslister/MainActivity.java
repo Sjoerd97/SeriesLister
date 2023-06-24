@@ -12,11 +12,11 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    String series[] = {"Sopranos", "The Wire"};
+    ArrayList<String> series = new ArrayList<>();
     int seriesImages[] = {R.drawable.sopranos, R.drawable.the_wire};
 
     public ConstraintLayout constraintLayout;
@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         constraintLayout = findViewById(R.id.main_layout);
+        series.add("Sopranos");
+        series.add("The Wire");
 
         //Biometrics.fingerprintScan(constraintLayout, getApplicationContext(), this);
         //Toast.makeText(this, "May thee be happy", Toast.LENGTH_LONG).show();
@@ -45,15 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         fab.setOnClickListener(v -> {
             editText.setVisibility(View.VISIBLE);
-            editText.showContextMenu();
-            series = Arrays.copyOf(series, series.length + 1);
-            editText.setOnClickListener(v1 -> series[series.length - 1] = editText.getText().toString());
+            editText.setOnClickListener(v1 -> series.add(editText.getText().toString()));
+            editText.setText("");
 
+            Toast.makeText(this, "Series added", Toast.LENGTH_LONG).show();
         });
 
-        Toast.makeText(this, "Series added", Toast.LENGTH_LONG).show();
-        editText.setVisibility(View.GONE);
-    }
+        //editText.setVisibility(View.GONE);
+}
 
     private void viewable() {
         listView = (ListView) findViewById(R.id.seriesListView);
