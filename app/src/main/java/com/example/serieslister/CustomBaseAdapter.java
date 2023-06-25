@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.serieslister.domain.Series;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +17,11 @@ import java.util.List;
 public class CustomBaseAdapter extends BaseAdapter {
 
     Context ctx;
-    private final ArrayList<String> series;
+    private final ArrayList<Series> series;
     private final int[] seriesImages;
     private final LayoutInflater layoutInflater;
 
-    public CustomBaseAdapter(Context ctx, ArrayList<String> series, int[] seriesImages) {
+    public CustomBaseAdapter(Context ctx, ArrayList<Series> series, int[] seriesImages) {
         this.ctx = ctx;
         this.series = series;
         this.seriesImages = seriesImages;
@@ -47,7 +49,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         TextView textView = (TextView) convertView.findViewById(R.id.textImage);
         //ImageView imageView = (ImageView) convertView.findViewById(R.id.imageIcon);
 
-        textView.setText(series.get(position));
+        textView.setText(series.get(position).getTitle());
         // TODO: build api to retrieve images
         //imageView.setImageResource(seriesImages[position]);
 
