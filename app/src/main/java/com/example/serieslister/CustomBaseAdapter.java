@@ -45,10 +45,11 @@ public class CustomBaseAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = layoutInflater.inflate(R.layout.activity_custom_list_viewer, null);
         TextView textView = (TextView) convertView.findViewById(R.id.textImage);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageIcon);
+        //ImageView imageView = (ImageView) convertView.findViewById(R.id.imageIcon);
 
         textView.setText(series.get(position));
-        imageView.setImageResource(seriesImages[position]);
+        // TODO: build api to retrieve images
+        //imageView.setImageResource(seriesImages[position]);
 
         return convertView;
     }

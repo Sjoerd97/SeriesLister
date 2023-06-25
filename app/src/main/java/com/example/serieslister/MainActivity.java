@@ -1,11 +1,14 @@
 package com.example.serieslister;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -13,6 +16,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         series.add("Sopranos");
         series.add("The Wire");
 
+        // Disabled for quick testing purposes
         //Biometrics.fingerprintScan(constraintLayout, getApplicationContext(), this);
         //Toast.makeText(this, "May thee be happy", Toast.LENGTH_LONG).show();
 
@@ -43,18 +48,29 @@ public class MainActivity extends AppCompatActivity {
 
     private void listAddable() {
         FloatingActionButton fab = findViewById(R.id.fab);
-        EditText editText = (EditText) findViewById(R.id.et_series);
 
-        fab.setOnClickListener(v -> {
-            editText.setVisibility(View.VISIBLE);
-            editText.setOnClickListener(v1 -> series.add(editText.getText().toString()));
-            editText.setText("");
-
-            Toast.makeText(this, "Series added", Toast.LENGTH_LONG).show();
-        });
-
-        //editText.setVisibility(View.GONE);
+        fab.setOnClickListener(v -> showAddSeries());
 }
+
+    private void showAddSeries() {
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogLayout = inflater.inflate(R.layout.add_series, null);
+
+        EditText editText = (EditText) dialogLayout.findViewById(R.id.et_series);
+
+        alertDialogBuilder.setTitle("Add Series")
+                .setPositiveButton("SAVE", (dialog, which) -> {
+                    series.add(editText.getText().toString());
+                    Toast.makeText(this, "Series added", Toast.LENGTH_LONG).show();
+                })
+                .setNegativeButton("CANCEL", (dialog, which) -> {
+                    Toast.makeText(this, "Jammur", Toast.LENGTH_SHORT).show();
+                })
+                .setView(dialogLayout)
+                .show();
+    }
 
     private void viewable() {
         listView = (ListView) findViewById(R.id.seriesListView);
