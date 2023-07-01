@@ -13,4 +13,4 @@
 .externalNativeBuild
 .cxx
 local.properties
-/bearerToken.txt
+/app/src/main/res/zsd
